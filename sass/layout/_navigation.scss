@@ -1,0 +1,190 @@
+.navigation{
+    &__checkbox {
+        display: none;
+        // animation: all 5s;
+
+        &:checked  ~ .navigation__nav{
+            display: block;
+            opacity: 1;
+            width: 100%;
+        }
+
+        &:checked ~ .navigation__background{
+            transform: scale(80);
+        }
+
+        &:checked + .navigation__button .navigation__icon {
+            // animation: moveInTop .8s ease-out;
+            // backface-visibility: hidden; 
+            // display: none;
+            // opacity: 0;
+            background-color: transparent;
+            &::before {
+                opacity: 1;
+                background-color:$color-grey-dark-3;
+                transform: rotate(-135deg);
+                top: 0rem;
+                // $color-grey-dark-3
+            }
+
+            &::after {
+                opacity: 1;
+                background-color:$color-grey-dark-3;
+                transform: rotate(135deg);
+                top: 0rem;
+                // $color-grey-dark-3
+            }
+        }
+    }
+
+    &__button {
+        position: fixed;
+        top: 6rem;
+        right:6rem;
+
+        @include respond(tab-port){
+            top: 3rem;
+            right:3rem;
+        }
+
+        @include respond(phone){
+            top: 2rem;
+            right:2rem;
+        }
+
+        height: 7rem;
+        width: 7rem;
+        background-color: $color-white;
+        border-radius: 50%;
+        z-index: 3000;
+        box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+        cursor: pointer;
+
+        &:hover span{
+
+            &::before{
+                top: 1rem;
+            }
+            
+            &::after{
+                top: -1rem;
+            }
+        }
+    }
+
+    &__background {
+        position: fixed;
+        height: 6rem;
+        width: 6rem;
+
+        @include respond(tab-port){
+            top: 3.1rem;
+            right:3.5rem;
+        }
+
+        @include respond(phone){
+            top: 2.1rem;
+            right:2.5rem;
+        }
+
+        border-radius: 50%;
+        top: 6.5rem;
+        right:6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+        transition: all 0.6s cubic-bezier(0.83, 0, 0.17, 1);
+
+        
+        // transform: scale(1);
+    }
+
+    &__nav{
+        height: 100vh;
+        
+        position: fixed;
+        top:0px;
+        right:0px;
+        z-index:2000;
+
+        width: 0%;
+        // opacity: 0;
+
+        display: none;
+        opacity: 0;
+        transition: all 1s;
+
+    }
+
+    &__list {
+        @include position-center;
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        padding: 1rem 2rem;
+        transition: all .4s;
+        background-size: 300%;
+        border-radius: 3px;
+        cursor: pointer;
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+
+        &:hover{
+            background-position: -40rem;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 40%, white 40%);
+            transform: translateX(2rem);
+            
+        }
+
+        
+
+        &:hover .navigation__link{
+            color: $color-primary;
+        }
+
+        // transform: translateX(-5rem);
+    }
+
+    &__link {
+        color: white;
+        text-decoration: none;
+        font-weight: 300;
+        font-size: $hg-font-size;
+        text-transform: uppercase;
+        
+        // transition: all .2s;
+    }
+
+    // ICON
+
+    &__icon {
+        // position: relative;
+        @include position-center;
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0rem;
+            transition: all .1s;
+        }
+
+        &::before{
+            top: .8rem;
+        }
+
+        &::after{
+            top: -.8rem;
+        }
+    }
+}

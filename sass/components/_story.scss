@@ -1,0 +1,97 @@
+.story{
+    width: 75%;
+    @include respond(tab-port){
+        // height: 100%;
+        width: 100%;
+        padding: 4rem;
+        padding-bottom: 5rem;
+        min-height: 315px;
+    }
+
+    margin: 0 auto;
+    padding: 6rem;
+    padding-bottom: 7.5rem;
+    background-color:  rgba($color-white,.65);
+    box-shadow: 0rem 3rem 6rem rgba($color-black,0.15);
+    border-radius: 1rem;
+    font-size: $default-font-size;
+    transform: skewX(-10deg);
+
+    @include respond(phone){
+        transform: skewX(0deg);
+    }
+    
+
+    & > * {
+        transform: skewX(10deg);
+
+        @include respond(phone){
+            transform: skewX(0deg);
+        }
+        
+    }
+//
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        position: relative;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        // this attribute only works when u defined: width, height, float
+        shape-outside: circle(50% at 50% 50%);
+        
+        -webkit-clip-path:circle(50% at 50% 50%);
+        clip-path:circle(50% at 50% 50%);
+        margin-right: 2rem;
+        overflow: hidden;
+        text-align: center;
+
+        @include respond(tab-port){
+            transform: skewX(10deg) translateX(-1rem);
+        }
+
+        @include respond(phone){
+            transform: skewX(0deg);
+        }
+    }
+
+    &__img{
+        height: 100%;
+        // transition: all .2s;
+        transform: scale(1.2);
+        backface-visibility: hidden;
+        transition: all .2s;      
+    }
+
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+
+    &:hover &__img{
+        -webkit-filter: blur(3px) brightness(80%);
+        filter:blur(3px) brightness(80%);
+        transform: scale(1);
+    }
+
+
+
+    &__text{
+        font-weight: 400;
+    }
+
+    &__caption{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,0);
+        color:white;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: center;
+        opacity: 0;
+        transition: all .2s;
+        // to solve the glitch in transition we need to add back face visibility
+        backface-visibility: hidden;
+    }
+}

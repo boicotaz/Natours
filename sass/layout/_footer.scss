@@ -1,0 +1,64 @@
+.footer {
+    background-color: $color-grey-dark;
+    padding: 5rem 0 10rem 0;
+    // position: relative;
+
+    @include respond(tab-port){
+        padding: 4rem 0 8rem 0;
+    }
+
+    &__logo-box{
+        height: 15rem;
+        width: 15rem;
+        position: relative;
+        margin: 0 auto; 
+        margin-bottom: 3rem;
+    }
+
+    &__logo{
+        height: 70%;
+        // width: 15rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__text-container {
+        color: white;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+        border-top: 2px solid $color-tertiary-dark;
+        font-weight: 700;
+
+        @include respond(tab-port){
+            width: 100%;
+            text-align: center;
+        }
+
+        &--left{
+            float: left;
+            text-transform: uppercase;
+            // letter-spacing: 3px;
+            
+        }
+
+        &--right{
+            // float: right;
+            margin-left: 10rem;
+
+            @include respond(tab-port){
+                margin-left: 0rem;
+            }
+        }
+    }
+
+    &__text--left{
+        display: inline-block;
+        &:not(:first-child){
+            padding-left: .5rem;
+        }
+    }
+
+
+}

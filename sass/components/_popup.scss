@@ -1,0 +1,131 @@
+.popup{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    // opacity: 0.9;
+    background-color: rgba($color-grey-dark-3 , 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+    // animation: moveInTop 1s ease-in-out;
+    
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        // transform: translateY(0);
+        // background-color: red;
+        top: 50%;
+    }
+
+
+    &__content{
+        transition: all .4s;
+        // transform: translateY(50%);
+        position: fixed;
+        top:20%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        background-color: white;
+        // height: 70vh;
+        width: 70vw;
+        border-radius: .6rem;
+        box-shadow: $default-shadow;
+        display: table;
+        overflow: hidden;
+
+        @include respond(tab-land){
+            // height: 60vh;
+            // width: ;
+        }
+
+    }
+
+    &__left {
+        // overflow: hidden;
+        width: 33.33333%;
+        display: table-cell;
+    }
+
+    &__right{ 
+        width: 66.6666667%;
+        // height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+        @include respond(tab-land){
+            padding: .5rem 1.5rem 0 1.5rem !important;
+            & h2 {
+                margin-bottom: 1rem !important;
+                font-size: 1.5rem;
+            }
+
+            & h3 {
+                margin-bottom: 0.7rem !important;
+                font-size: 1rem;
+            }
+
+            & a {
+                padding: .9rem 2rem !important;
+                font-size: 1rem !important;
+            }
+        }
+        position: relative;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        // max-width: 20rem;
+        // height: 50%;
+        //s
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+        @include respond(tab-land){
+            margin-bottom: 1rem;
+            max-height: 23rem;
+            overflow: auto;
+            font-size: .8rem;
+        }
+
+        -moz-column-count: 2;
+        column-count: 2;
+        column-gap: 4rem;
+        // column-width: 3rem;
+
+            
+
+        column-rule: 1px solid $color-grey-light-2;
+        
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+
+    &__close{
+        display: inline-block;
+        position: absolute;
+        text-decoration: none;
+        text-align: right;
+        font-size: 4rem;
+        right: 2rem;
+        top: 0rem;
+        color: $color-grey-dark-3;
+        transition: all .2s;
+
+        &:hover {
+            color: $color-primary;
+            top: -.2rem;
+            // box-shadow: $default-shadow;
+        }
+    }
+}
